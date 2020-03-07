@@ -13,11 +13,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Update, upgrade and install core software
 RUN apt update \
     && apt -y upgrade \
-    && apt -y install software-properties-common wget git curl jq \
+    && apt -y install software-properties-common wget curl jq \
     && add-apt-repository ppa:transmissionbt/ppa \
     && apt update \
-    && apt install -y sudo transmission-cli transmission-common transmission-daemon curl rar unrar zip unzip ufw iputils-ping openvpn bc tzdata \
-    python2.7 python2.7-pysqlite2 && ln -sf /usr/bin/python2.7 /usr/bin/python2 iputils-ping dnsutils net-tools vim \
+    && apt install -y sudo transmission-cli transmission-common transmission-daemon rar unrar zip unzip ufw iputils-ping openvpn bc tzdata iputils-ping dnsutils net-tools vim \
+    python2.7 python2.7-pysqlite2 && ln -sf /usr/bin/python2.7 /usr/bin/python2 \
     && apt install -y tinyproxy telnet \
     && wget https://github.com/Yelp/dumb-init/releases/download/v${DUMBINIT_VERSION}/dumb-init_${DUMBINIT_VERSION}_amd64.deb \
     && dpkg -i dumb-init_${DUMBINIT_VERSION}_amd64.deb \
