@@ -17,17 +17,7 @@ RUN apt update \
     && add-apt-repository ppa:transmissionbt/ppa \
     && apt update \
     && apt install -y sudo transmission-cli transmission-common transmission-daemon curl rar unrar zip unzip ufw iputils-ping openvpn bc tzdata \
-    python2.7 python2.7-pysqlite2 && ln -sf /usr/bin/python2.7 /usr/bin/python2 \
-    && wget https://github.com/Secretmapper/combustion/archive/release.zip \
-    && unzip release.zip -d /opt/transmission-ui/ \
-    && rm release.zip \
-    && mkdir /opt/transmission-ui/transmission-web-control \
-    && curl -sL `curl -s https://api.github.com/repos/ronggang/transmission-web-control/releases/latest | jq --raw-output '.tarball_url'` | tar -C /opt/transmission-ui/transmission-web-control/ --strip-components=2 -xz \
-    && ln -s /usr/share/transmission/web/style /opt/transmission-ui/transmission-web-control \
-    && ln -s /usr/share/transmission/web/images /opt/transmission-ui/transmission-web-control \
-    && ln -s /usr/share/transmission/web/javascript /opt/transmission-ui/transmission-web-control \
-    && ln -s /usr/share/transmission/web/index.html /opt/transmission-ui/transmission-web-control/index.original.html \
-    && git clone git://github.com/endor/kettu.git /opt/transmission-ui/kettu \
+    python2.7 python2.7-pysqlite2 && ln -sf /usr/bin/python2.7 /usr/bin/python2 iputils-ping dnsutils net-tools vim \
     && apt install -y tinyproxy telnet \
     && wget https://github.com/Yelp/dumb-init/releases/download/v${DUMBINIT_VERSION}/dumb-init_${DUMBINIT_VERSION}_amd64.deb \
     && dpkg -i dumb-init_${DUMBINIT_VERSION}_amd64.deb \
@@ -126,14 +116,13 @@ ENV OPENVPN_USERNAME=**None** \
     UFW_ALLOW_GW_NET=false \
     UFW_EXTRA_PORTS= \
     UFW_DISABLE_IPTABLES_REJECT=false \
-    TRANSMISSION_WEB_UI= \
     PUID= \
     PGID= \
     TRANSMISSION_WEB_HOME= \
     DROP_DEFAULT_ROUTE= \
-    WEBPROXY_ENABLED=false \
+    WEBPROXY_ENABLED=true \
     WEBPROXY_PORT=8888 \
-    HEALTH_CHECK_HOST=google.com \
+    HEALTH_CHECK_HOST=192.168.104.10 \
     DOCKER_LOG=false
 
 HEALTHCHECK --interval=5m CMD /etc/scripts/healthcheck.sh
