@@ -14,8 +14,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update \
     && apt -y upgrade \
     && apt -y install software-properties-common wget curl jq \
-    && add-apt-repository ppa:transmissionbt/ppa \
-    && apt update \
     && apt install -y sudo transmission-cli transmission-common transmission-daemon rar unrar zip unzip ufw iputils-ping openvpn bc tzdata iputils-ping dnsutils net-tools vim netcat \
     python2.7 python2.7-pysqlite2 && ln -sf /usr/bin/python2.7 /usr/bin/python2 \
     && apt install -y tinyproxy telnet \
@@ -24,8 +22,6 @@ RUN apt update \
     && rm -rf dumb-init_${DUMBINIT_VERSION}_amd64.deb \
     && curl -L https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-${DOCKERIZE_ARCH}-${DOCKERIZE_VERSION}.tar.gz | tar -C /usr/local/bin -xzv \
     && groupmod -g 1000 users \
-    && useradd -u 911 -U -d /config -s /bin/false abc \
-    && usermod -G users abc
 
 ADD openvpn/ /etc/openvpn/
 ADD transmission/ /etc/transmission/

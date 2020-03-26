@@ -12,6 +12,7 @@ services:
     - "9091:9091"
     - "8888:8888"
   dns:
+    - 192.168.104.10
     - 1.1.1.1
   volumes:
     - /Users/ronaldmendoza/docker/srv1/data:/data
