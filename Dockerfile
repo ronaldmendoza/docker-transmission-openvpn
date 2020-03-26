@@ -20,8 +20,7 @@ RUN apt update \
     && wget https://github.com/Yelp/dumb-init/releases/download/v${DUMBINIT_VERSION}/dumb-init_${DUMBINIT_VERSION}_amd64.deb \
     && dpkg -i dumb-init_${DUMBINIT_VERSION}_amd64.deb \
     && rm -rf dumb-init_${DUMBINIT_VERSION}_amd64.deb \
-    && curl -L https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-${DOCKERIZE_ARCH}-${DOCKERIZE_VERSION}.tar.gz | tar -C /usr/local/bin -xzv \
-    && groupmod -g 1000 users \
+    && curl -L https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-${DOCKERIZE_ARCH}-${DOCKERIZE_VERSION}.tar.gz | tar -C /usr/local/bin -xzv
 
 ADD openvpn/ /etc/openvpn/
 ADD transmission/ /etc/transmission/
