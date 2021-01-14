@@ -12,7 +12,6 @@ services:
     - "9091:9091"
     - "8888:8888"
   dns:
-    - 192.168.104.10
     - 1.1.1.1
   volumes:
     - /Users/ronaldmendoza/docker/srv1/data:/data
@@ -24,5 +23,5 @@ services:
     - OPENVPN_PROVIDER=TORGUARD
     - OPENVPN_CONFIG=USA-SAN-FRANCISCO
     - LOCAL_NETWORK=192.168.0.0/16
-    - HEALTH_CHECK_HOST=192.168.104.10
+    - HEALTH_CHECK_HOST=1.1.1.1
     - WEBPROXY_ENABLED=true
